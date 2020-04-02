@@ -131,7 +131,7 @@ namespace scanner
         {
             {
 
-                if (s[0] == '"' && s[s.Length] == '"')
+                if (s[0] == '\"' && s[s.Length-1] == '\"')
                 {
                     token.TokenName = "String";
                     return true;
@@ -155,7 +155,7 @@ namespace scanner
         }
         public static int Get_Comment_End(String s,int pointer)
         {
-            for (pointer=pointer; pointer < s.Length; pointer++)
+            for (; pointer < s.Length; pointer++)
             {
 
             
@@ -163,6 +163,20 @@ namespace scanner
             {
                     return pointer + 3;
             }
+            }
+            return s.Length;
+
+        }
+        public static int Get_String_End(String s, int pointer)
+        {
+            for (; pointer < s.Length; pointer++)
+            {
+
+
+                if ( s[pointer].Equals('\"'))
+                {
+                    return pointer + 1;
+                }
             }
             return s.Length;
 
