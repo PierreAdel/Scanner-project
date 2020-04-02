@@ -1,0 +1,11 @@
+C:\Users\sheha\source\repos\scanner\scanner\bin\Debug\netcoreapp3.1\scanner.exe
+C:\Users\sheha\source\repos\scanner\scanner\bin\Debug\netcoreapp3.1\scanner.deps.json
+C:\Users\sheha\source\repos\scanner\scanner\bin\Debug\netcoreapp3.1\scanner.runtimeconfig.json
+C:\Users\sheha\source\repos\scanner\scanner\bin\Debug\netcoreapp3.1\scanner.runtimeconfig.dev.json
+C:\Users\sheha\source\repos\scanner\scanner\bin\Debug\netcoreapp3.1\scanner.dll
+C:\Users\sheha\source\repos\scanner\scanner\bin\Debug\netcoreapp3.1\scanner.pdb
+C:\Users\sheha\source\repos\scanner\scanner\obj\Debug\netcoreapp3.1\scanner.csprojAssemblyReference.cache
+C:\Users\sheha\source\repos\scanner\scanner\obj\Debug\netcoreapp3.1\scanner.AssemblyInfoInputs.cache
+C:\Users\sheha\source\repos\scanner\scanner\obj\Debug\netcoreapp3.1\scanner.AssemblyInfo.cs
+C:\Users\sheha\source\repos\scanner\scanner\obj\Debug\netcoreapp3.1\scanner.dll
+C:\Users\sheha\source\repos\scanner\scanner\obj\Debug\netcoreapp3.1\scanner.pdb
