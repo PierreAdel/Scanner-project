@@ -4,6 +4,10 @@ package scanner;
 
 public class Code_Scanner {
     
+     
+  
+      
+      
 // GROUP 1 single character tokens
     Token SEMI = new Token("SEMI");
     Token COMMA = new Token("COMMA");
@@ -35,7 +39,8 @@ public class Code_Scanner {
     Token NUMBER = new Token("NUMBER");
     Token COMMENT = new Token("COMMENT");
     Token IDENTIFIER = new Token("IDENTIFIER");   
-    
+       char[] arr = new char[1000];
+    public int indx =0;
     char[] MyCode= new char[10000];
     
     public  Code_Scanner(char[] charArray){
@@ -46,7 +51,7 @@ public class Code_Scanner {
     public static int pointer = 0;
     
     public  Token tokenize(){
-        
+        //System.out.print(MyCode[pointer]);
         //  check on single character tokens
         if(MyCode[pointer]== ';'){
             System.out.print("Token:   " + MyCode[pointer] +"    Token Name:   ");
@@ -78,11 +83,14 @@ public class Code_Scanner {
             pointer++;
             return MINUS;   
         }
+         
+         
          else if(MyCode[pointer]== '*' && (MyCode[pointer-1] != '/' || MyCode[pointer-1] != '*')){
               System.out.print("Token:   " + MyCode[pointer] +"    Token Name:   ");
             pointer++;
             return MULT;   
         }
+         
          else if(MyCode[pointer]== '/' && MyCode[pointer+1] != '*'){
               System.out.print("Token:   " + MyCode[pointer] +"    Token Name:   ");
             pointer++;
@@ -104,55 +112,63 @@ public class Code_Scanner {
             pointer=pointer+2;
             return TESTNOTEQ;   
         }
-        //quoted string
-        else if(MyCode[pointer]== '"'){
-           pointer++;
-            System.out.print("Token: ");
-            while(MyCode[pointer]!='"')
+        //
+       
+        else if(Character.isAlphabetic(MyCode[pointer]))
+        {
+            try{
+            while(Character.isAlphabetic(MyCode[pointer]) )
             {
-                System.out.print(MyCode[pointer]);
+                
+                arr[indx] = MyCode[pointer];
                 pointer++;
+                indx++;
                 
             }
-            System.out.print("  Token Name: ");
-            return QUOTEDSTRING;    
+            
+            if(Character.isDigit(MyCode[pointer]))
+            {
+                return IDENTIFIER;
+            }
+            }catch(Exception e){}
+           // System.out.println("");
+            //System.out.println(indx);
+            String arrstr = new String(arr).substring(0, indx);
+           
+            
+          if(arrstr.equals("WRITE"))
+                return WRITE;
+          if(arrstr.equals("IF")) 
+                return IF;
+           if(arrstr.equals("READ"))
+                return READ;
+           if(arrstr.equals("ELSE"))
+               return ELSE;
+            if(arrstr.equals("END"))
+                return END;
+            if(arrstr.equals("MAIN"))
+                 return MAIN;
+             if(arrstr.equals("BEGIN"))
+                     return BEGIN;
+             if(arrstr.equals("STRING")) 
+                   return STRING;
+             if(arrstr.equals("INT"))
+                   return INT;
+             if(arrstr.equals("REAL"))
+                   return REAL;
+             if(arrstr.equals("RETURN"))
+                     return RETURN;
+    
+          
         }
-        //COMMENT
-        else if(MyCode[pointer]== '/'&& MyCode[pointer+1]=='*'&& MyCode[pointer+2]=='*'){
-            pointer=pointer+3;
-            if(MyCode[pointer] != '*'&& MyCode[pointer+1] !='*'&& MyCode[pointer+2] !='/')
-                System.out.print("Token: " + "/**" );
-            while(MyCode[pointer] != '*'&& MyCode[pointer+1] !='*'&& MyCode[pointer+2] !='/')
-            {
-                System.out.print(MyCode[pointer]);
-                pointer++;
-            } 
-            System.out.print(MyCode[pointer] );
-            System.out.print( "**/" + "  Token Name: ");
-            return COMMENT;   
-           }
-        //NUMBER - me7tag yetgarab 3shan nezbot el if aw while loop bs elexception mbwz eldonia
-        else if(Character.isDigit(MyCode[pointer]))
-        {   
-            System.out.print(MyCode[pointer]);
-            pointer++;
-            System.out.print("Token: ");
-//            while(Character.isDigit(MyCode[pointer]) || ((MyCode[pointer]== '.') && Character.isDigit(MyCode[pointer+1])))
-            if(Character.isDigit(MyCode[pointer]) || ((MyCode[pointer]== '.') && Character.isDigit(MyCode[pointer+1])))
-            {
-                System.out.print(MyCode[pointer]);
-                if((MyCode[pointer]== '.') )
-                    
-                        { System.out.print(pointer+1);
-                            for (int i = pointer+2; i < pointer+7; i++) {        
-                            if(Character.isDigit(MyCode[i]))
-                                        System.out.print(MyCode[i]);}
-                            
-                   }}
-            System.out.print("  Token Name: ");
-            return NUMBER;
-        }     
-       return null;
+        
+        
+    //    else return BEGIN;
+        return null;
+      
+        
+         
     }
+    
    
 }
